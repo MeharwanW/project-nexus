@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style1.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form id="registrationForm">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" id="fullName" placeholder="Enter your name" required>
+            <div class="error" id="fullNameError"></div>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="username" placeholder="Enter your username" required>
+            <div class="error" id="usernameError"></div>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <div class="error" id="emailError"></div>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" id="phoneNumber" placeholder="Enter your number" required>
+            <div class="error" id="phoneNumberError"></div>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <div class="error" id="passwordError"></div>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+            <div class="error" id="confirmPasswordError"></div>
+          </div>
+        </div>
+        <div class="gender-details">
+            <input type="radio" name="gender" id="dot-1">
+            <input type="radio" name="gender" id="dot-2">
+            <input type="radio" name="gender" id="dot-3">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      validateForm();
+    });
+
+    function validateForm() {
+
+      const errorElements = document.querySelectorAll('.error');
+      errorElements.forEach(element => {
+        element.textContent = '';
+      });
+
+
+      const fullName = document.getElementById('fullName').value;
+      if (fullName.length < 3) {
+        document.getElementById('fullNameError').textContent = 'Full name must be at least 3 characters long.';
+      }
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+      }
+    }
+  </script>
+</body>
+
+</html>
